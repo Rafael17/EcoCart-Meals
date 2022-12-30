@@ -118,5 +118,5 @@ app.use(errorLogger);
 app.use(errorResponder);
 app.use(invalidResource);
 
-//exports.handler = serverless(app);
-app.listen(3000);
+exports.handler = serverless(app);
+//app.listen(3000);

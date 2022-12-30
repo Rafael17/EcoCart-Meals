@@ -26,10 +26,10 @@ data "archive_file" "main" {
   output_path = "${path.module}/.terraform/archive_files/function.zip"
 }
 
-resource "aws_lambda_function" "lambda_hello_world" {
+resource "aws_lambda_function" "meals_api" {
   filename      = "${path.module}/.terraform/archive_files/function.zip"
   function_name = "lambda-hello-world"
-  role          = aws_iam_role.lambda_hello_world_role.arn
+  role          = aws_iam_role.meals_api_role.arn
   handler       = "index.handler"
   runtime       = "nodejs12.x"
   timeout = 300
@@ -44,8 +44,8 @@ resource "aws_lambda_function" "lambda_hello_world" {
   source_code_hash = data.archive_file.main.output_base64sha256
 }
 
-resource "aws_iam_role" "lambda_hello_world_role" {
-  name               = "lambda_hello_world_role"
+resource "aws_iam_role" "meals_api_role" {
+  name               = "meals_api_role"
   assume_role_policy = <<EOF
 {
   "Version": "2012-10-17",
