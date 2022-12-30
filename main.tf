@@ -28,10 +28,10 @@ data "archive_file" "main" {
 
 resource "aws_lambda_function" "meals_api" {
   filename      = "${path.module}/.terraform/archive_files/function.zip"
-  function_name = "lambda-hello-world"
+  function_name = "lambda-meals-api"
   role          = aws_iam_role.meals_api_role.arn
   handler       = "index.handler"
-  runtime       = "nodejs12.x"
+  runtime       = "nodejs16.x"
   timeout = 300
 
   environment {
@@ -62,12 +62,12 @@ resource "aws_iam_role" "meals_api_role" {
 }
 EOF
   inline_policy {
-    name = "lamda-hello-world-policy"
+    name = "lamda-meals-api-policy"
     policy = jsonencode({
       "Version" : "2012-10-17",
       "Statement" : [
         {
-          "Sid" : "LambdaHelloWorld1",
+          "Sid" : "LambdaMealsApi1",
           "Effect" : "Allow",
           "Action" : [
             "logs:CreateLogGroup",
