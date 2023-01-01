@@ -1,0 +1,87 @@
+openapi: '3.0.0'
+
+info:
+  version: '1.0.0'
+  title: 'Meals API'
+  description: Get meals based on main ingredient
+
+servers:
+  - url: https://smlpfidpmsnupcswsklpq5vzj40lerov.lambda-url.us-east-1.on.aws
+    description: Production server
+
+paths:
+  /meals/:
+    parameters:
+      - in: query
+        name: main_ingredient
+        schema:
+          type: string
+    get:
+      summary: Get meals by main ingredient
+      responses:
+        '200':
+          description: The meals corresponding to the provided `main_ingredient`
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Meal'
+        404:
+          description: No meal found for the provided `id`
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        500:
+          description: Unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
+components:
+  schemas:
+    MealArray:
+      type: array
+      items:
+        $ref: '#/components/schemas/Meal'
+    Meal:
+      type: object
+      properties:
+        id:
+          $ref: '#/components/schemas/MealId'
+        name:
+          type: string
+        instructions:
+          type: string
+        tags:
+          type: array
+          items:
+            type: string
+        thumbUrl:
+          type: string
+        youtubeUrl:
+          type: string
+        ingredients:
+          type: array
+          items:
+            type: object
+            properties:
+              ingredient:
+                type: string
+              measurement:
+                type: string
+    Error:
+      type: object
+      required:
+        - message
+      properties:
+        message:
+          description: A human readable error message
+          type: string
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+security:
+  - bearerAuth: []

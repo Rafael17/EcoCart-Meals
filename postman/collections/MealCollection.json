@@ -1,0 +1,208 @@
+{
+	"info": {
+		"_postman_id": "1de5cf94-20bf-4b05-903c-a42ae07f959c",
+		"name": "MealCollection",
+		"description": "Get meals based on main ingredient",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_uid": "10967586-1de5cf94-20bf-4b05-903c-a42ae07f959c"
+	},
+	"item": [
+		{
+			"name": "Get meals by main ingredient",
+			"id": "2899e41a-677e-4221-901a-2c11252981ac",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json"
+					}
+				],
+				"url": {
+					"raw": "{{baseUrl}}/meals/?main_ingredient=chicken",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"meals",
+						""
+					],
+					"query": [
+						{
+							"key": "main_ingredient",
+							"value": "chicken"
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"id": "616f93f1-d663-427a-92a2-c39c4fbe9a1f",
+					"name": "The meals corresponding to the provided `main_ingredient`",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"description": "Added as a part of security scheme: bearer",
+								"key": "Authorization",
+								"value": "Bearer <token>"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/meals/?main_ingredient=nostrud",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"meals",
+								""
+							],
+							"query": [
+								{
+									"key": "main_ingredient",
+									"value": "nostrud"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						}
+					],
+					"cookie": [],
+					"body": "{\n  \"id\": {\n    \"value\": \"reference #/components/schemas/MealId not found in the OpenAPI spec\"\n  },\n  \"name\": \"incididunt co\",\n  \"instructions\": \"velit esse minim dolore\",\n  \"tags\": [\n    \"velit eu dolore esse\",\n    \"eu occaecat enim anim\"\n  ],\n  \"thumbUrl\": \"dolore dolor velit\",\n  \"youtubeUrl\": \"dol\",\n  \"ingredients\": [\n    {\n      \"ingredient\": \"irure deserunt\",\n      \"measurement\": \"Lorem esse do\"\n    },\n    {\n      \"ingredient\": \"ea magna nisi\",\n      \"measurement\": \"consequat \"\n    }\n  ]\n}"
+				},
+				{
+					"id": "e51406fc-ab31-4ca0-96b0-fb4b61dcbccc",
+					"name": "No meal found for the provided `id`",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"description": "Added as a part of security scheme: bearer",
+								"key": "Authorization",
+								"value": "Bearer <token>"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/meals/?main_ingredient=nostrud",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"meals",
+								""
+							],
+							"query": [
+								{
+									"key": "main_ingredient",
+									"value": "nostrud"
+								}
+							]
+						}
+					},
+					"status": "Not Found",
+					"code": 404,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						}
+					],
+					"cookie": [],
+					"body": "{\n  \"message\": \"officia\"\n}"
+				},
+				{
+					"id": "05a50d56-ca8e-4dc3-a0b5-2dbfd39adda6",
+					"name": "Unexpected error",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"description": "Added as a part of security scheme: bearer",
+								"key": "Authorization",
+								"value": "Bearer <token>"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/meals/?main_ingredient=nostrud",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"meals",
+								""
+							],
+							"query": [
+								{
+									"key": "main_ingredient",
+									"value": "nostrud"
+								}
+							]
+						}
+					},
+					"status": "Internal Server Error",
+					"code": 500,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						}
+					],
+					"cookie": [],
+					"body": "{\n  \"message\": \"officia\"\n}"
+				}
+			]
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "eLX.!ejk_HP7",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "6e393326-6f38-4a35-b2b9-5c21f5d0f553",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "af7e9acb-5cc4-4167-b724-9b800f095661",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"id": "50b3a0ca-135a-4f70-8c26-bbc0500b33e8",
+			"key": "baseUrl",
+			"value": "https://smlpfidpmsnupcswsklpq5vzj40lerov.lambda-url.us-east-1.on.aws",
+			"type": "string"
+		}
+	]
+}
